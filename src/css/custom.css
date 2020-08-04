@@ -1,0 +1,12 @@
+.required{    
+    color: rgb(168, 0, 0);    
+}
+.margin-10{
+    margin-top: 10px;
+}
+.customcontrol{
+    border: 1px solid rgb(96, 94, 92);;
+}
+.customcontrol_Required{
+    border: 1px solid rgb(168, 0, 0);
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "employee-time-tracker-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/employeeTimeTracker/EmployeeTimeTrackerWebPart.js",
+          "manifest": "./src/webparts/employeeTimeTracker/EmployeeTimeTrackerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "EmployeeTimeTrackerWebPartStrings": "lib/webparts/employeeTimeTracker/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js"
+  }
+}

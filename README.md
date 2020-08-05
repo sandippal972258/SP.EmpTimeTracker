@@ -1,6 +1,20 @@
 ## sp-emp-time-tracker
 
-This is where you include your WebPart documentation.
+Steps for configure webpart in your tenant.
+1 - Clone code from github in your local. Follow this commands.
+    git clone the repo
+    npm i
+    npm i -g gulp
+    gulp
+2 - Run -  gulp serve    
+3 - Take list template file from assests folder and create employee time tracker list in your site collection.
+4 - Create a new page in modern site and drop emp time tracker webpart  in your page.
+5 - Edit web part and put your employee tracker list name.
+6 - Last, refresh the page and you will have ready this web part in your tenant.
+
+NOTE : 
+You can also drop package in appcatalog site and deploy it at tenant level and you can use it.
+
 
 ### Building the code
 

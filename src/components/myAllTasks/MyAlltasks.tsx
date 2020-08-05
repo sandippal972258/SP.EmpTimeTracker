@@ -103,7 +103,7 @@ export default class MyAlltasksComponent  extends React.Component<IMyAllTaskComp
                       )
                     }                                                      
                 }              
-              },            
+              }              
           ];
           this.state = {
             myallTaskCoumns : columns,

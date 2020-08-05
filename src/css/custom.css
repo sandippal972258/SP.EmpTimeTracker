@@ -10,3 +10,20 @@
 .customcontrol_Required{
     border: 1px solid rgb(168, 0, 0);
 }
+.red{
+    background-color:rgb(168, 0, 0);
+    color: #ffffff !important;
+}
+.green{
+    background-color:#159F5C;
+    color: #ffffff !important;
+}
+.red label ,.green label{
+    color: #fff !important;
+}
+.CanvasZone {
+    max-width: 100% !important;
+}
+.ControlZone {
+margin-top: 0 !important;
+}

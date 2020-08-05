@@ -6,11 +6,17 @@ Steps for configure webpart in your tenant.
     npm i
     npm i -g gulp
     gulp
+<br/>
 2 - Run -  gulp serve    
+<br/>
 3 - Take list template file from assests folder and create employee time tracker list in your site collection.
+<br/>
 4 - Create a new page in modern site and drop emp time tracker webpart  in your page.
+<br/>
 5 - Edit web part and put your employee tracker list name.
+<br/>
 6 - Last, refresh the page and you will have ready this web part in your tenant.
+<br/>
 
 NOTE : 
 You can also drop package in appcatalog site and deploy it at tenant level and you can use it.

@@ -1,6 +1,9 @@
 ## sp-emp-time-tracker
 
 Steps for configure webpart in your tenant.
+
+<br/>
+<br/>
 1 - Clone code from github in your local. Follow this commands.
     git clone the repo
     npm i

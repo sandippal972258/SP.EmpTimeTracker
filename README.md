@@ -20,9 +20,11 @@ Steps for configure webpart in your tenant.
 <br/>
 6 - Last, refresh the page and you will have ready this web part in your tenant.
 <br/>
+<br/>
+<br/>
 
 NOTE : 
-You can also drop package in appcatalog site and deploy it at tenant level and you can use it.
+<b>You can also drop package in appcatalog site and deploy it at tenant level and you can use it.</b>
 
 
 ### Building the code

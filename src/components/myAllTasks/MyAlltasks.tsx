@@ -117,7 +117,7 @@ export default class MyAlltasksComponent  extends React.Component<IMyAllTaskComp
                 <div className="ms-Grid" dir="ltr">
                   <div className="ms-Grid-row">
                     <div className="ms-Grid-col ms-sm10 ms-md10 ms-lg10" >
-                        <h3>All Tasks</h3>
+                        <h3>My all tasks</h3>
                     </div>                    
                     <div className="ms-Grid-col ms-sm2 ms-md2 ms-lg2" >
                         <Link to={"/"}>
@@ -146,15 +146,7 @@ export default class MyAlltasksComponent  extends React.Component<IMyAllTaskComp
           var response = await this._getTodaysTasks(this.props.listname);
           if(response != null)
             this.setState({todaysTasks : response,isClientDataLoaded:true});          
-        }
-        public async componentWillReceiveProps(props) {
-          const { isRefresh } = this.props;
-          if (props.isRefresh !== isRefresh) {
-            var response = await this._getTodaysTasks(this.props.listname);
-            if(response != null)
-              this.setState({todaysTasks : response,isClientDataLoaded:true});          
-          }
-        }
+        }        
         public async _getTodaysTasks(listname : string): Promise<any> {   
           try 
           {                         

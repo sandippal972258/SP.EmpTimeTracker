@@ -6,7 +6,7 @@ Steps for configure webpart in your tenant.
 1 - Clone code from github in your local. Follow this commands.<br/>
     git clone the repo<br/>
     npm i<br/>
-2 - Run -  gulp serve    
+2 - Run this command for run project -> gulp serve    
 <br/>
 3 - Take list template file from assests folder and create employee time tracker list in your site collection.
 <br/>

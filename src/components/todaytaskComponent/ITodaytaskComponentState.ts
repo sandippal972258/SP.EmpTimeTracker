@@ -15,5 +15,5 @@ export interface ITodaytaskComponentState  {
     isClientDataLoaded : boolean,
     todaysTasks : [],
     totalTime : string,
-    secondCounter : number
+    secondCounter : number    
   }

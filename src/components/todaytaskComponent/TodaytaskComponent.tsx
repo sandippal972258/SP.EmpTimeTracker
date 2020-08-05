@@ -52,7 +52,7 @@ export default class TodaytaskComponent  extends React.Component<ITodaytaskCompo
               }              
             },
             {
-              key: 'CV_Category',name: 'Category',fieldName: 'CV_Category',minWidth: 100,data: 'string',isMultiline:true ,
+              key: 'CV_Category',name: 'Category',fieldName: 'CV_Category_custom',minWidth: 100,data: 'string',isMultiline:true ,
               isRowHeader: true,isResizable: true,isSorted: false,
               onRender: (item: any) => {                                                              
                   var termName = "";
@@ -64,7 +64,7 @@ export default class TodaytaskComponent  extends React.Component<ITodaytaskCompo
               }              
             },
             {
-              key: 'Created',name: 'Start Time',fieldName: 'Created',minWidth: 100,data: 'string',isMultiline:true ,
+              key: 'Created',name: 'Start Time',fieldName: 'Created_custom',minWidth: 100,data: 'number',isMultiline:true ,
               isRowHeader: true,isResizable: true,isSorted: false,
               onRender: (item: any) => {                                                              
                 var startTime = moment(item.Created).format("L hh:mm:ss A");
@@ -74,7 +74,7 @@ export default class TodaytaskComponent  extends React.Component<ITodaytaskCompo
               }              
             },            
             {
-              key: 'CV_EndTime',name: 'End Time',minWidth: 100,data: 'string',isMultiline:true ,
+              key: 'CV_EndTime',name: 'End Time',fieldName: 'CV_EndTime_custom',minWidth: 100,data: 'number',isMultiline:true ,
               isRowHeader: true,isResizable: true,isSorted: false,
               onRender: (item: any) => {                                
                   var timertime = "18:17:00";
@@ -237,8 +237,15 @@ export default class TodaytaskComponent  extends React.Component<ITodaytaskCompo
           var todaysTotalTime = 0;
           for(var i=0; i<response.length; i++)
           {
+          
+            response[i]["CV_Category_custom"] = response[i].TaxCatchAll[0].Term;
+            response[i]["CV_EndTime_custom"] = null;            
+            var Created =  new Date(response[i].Created);
+            response[i]["Created_custom"] = Created.valueOf();
             if(response[i].CV_EndTime == null || response[i].CV_EndTime == undefined || response[i].CV_EndTime == "")
             {
+              var CV_EndTime =  new Date(response[i].CV_EndTime);
+              response[i]["CV_EndTime_custom"] = CV_EndTime.valueOf();              
               currentRunningtask = response[i];              
             }
             else

@@ -268,7 +268,7 @@ export default class TodaytaskComponent  extends React.Component<ITodaytaskCompo
               });
               var postData = {};                
               postData["Title"] = this.state.Title;
-              postData["CV_Description"] = this.state.CV_Description;        
+              postData["CV_Description"] = descriptionText;        
               postData["CV_Category"] = {
                 "__metadata": { "type": "SP.Taxonomy.TaxonomyFieldValue" },
                 "Label": this.state.CV_Category[0].name,
@@ -396,4 +396,5 @@ export default class TodaytaskComponent  extends React.Component<ITodaytaskCompo
           else 
                return "";   
       }
+      
   }     

@@ -49,7 +49,7 @@ export default class EmployeeTimeTrackerWebPart extends BaseClientSideWebPart <I
               groupName: strings.BasicGroupName,
               groupFields: [
                 PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                  label: "List Name"
                 })
               ]
             }

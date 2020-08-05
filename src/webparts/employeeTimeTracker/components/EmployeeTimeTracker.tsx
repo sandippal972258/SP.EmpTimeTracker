@@ -4,6 +4,8 @@ import { IEmployeeTimeTrackerProps } from './IEmployeeTimeTrackerProps';
 import { IEmployeeTimeTrackerState } from './IEmployeeTimeTrackerState';
 import TodaytaskComponent from "../../../components/todaytaskComponent/TodaytaskComponent";
 import MyAlltasks from "../../../components/myAllTasks/MyAlltasks";
+import PageNotFound from "../../../components/pagenotfound/pagenotfound";
+
 import { Route, Link, Switch, BrowserRouter as Router,HashRouter } from 'react-router-dom';  
 import {  MessageBar,MessageBarType} from 'office-ui-fabric-react';
 
@@ -33,6 +35,7 @@ export default class EmployeeTimeTracker extends React.Component<IEmployeeTimeTr
                         <Switch>                            
                           <Route sensitive  exact path="/"  component={(props) => <TodaytaskComponent  listname={this.props.listname} context={this.props.context} isRefresh={this.state.isRefresh} />} />
                           <Route path="/viewalltasks"  component={(props) => <MyAlltasks  listname={this.props.listname} context={this.props.context} />} />
+                          <Route component={PageNotFound} />
                         </Switch>                        
                       </div>
                   </div>

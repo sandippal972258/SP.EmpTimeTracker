@@ -31,7 +31,8 @@ export default class MyAlltasksComponent  extends React.Component<IMyAllTaskComp
           const columns: IColumn[] = [                                
             {
               key: 'Title',name: 'Title',fieldName: 'Title',minWidth: 100,data: 'string',isMultiline:true ,
-              isRowHeader: true,isResizable: true,isSorted: false,              
+              isRowHeader: true,isResizable: true,              
+              isSorted: true,onColumnClick: this._onColumnClick,
             },                        
             {
               key: 'CV_Description',name: 'Description',fieldName: 'CV_Description',minWidth: 250,data: 'string',isMultiline:true ,
@@ -45,7 +46,7 @@ export default class MyAlltasksComponent  extends React.Component<IMyAllTaskComp
             },
             {
               key: 'CV_Category',name: 'Category',fieldName: 'CV_Category',minWidth: 100,data: 'string',isMultiline:true ,
-              isRowHeader: true,isResizable: true,isSorted: false,
+              isRowHeader: true,isResizable: true,isSorted: true,onColumnClick: this._onColumnClick,
               onRender: (item: any) => {                                                              
                   var termName = "";
                   if(item.TaxCatchAll != null && item.TaxCatchAll != undefined && item.TaxCatchAll.length > 0)
@@ -56,8 +57,8 @@ export default class MyAlltasksComponent  extends React.Component<IMyAllTaskComp
               }              
             },
             {
-              key: 'Created',name: 'Start Time',fieldName: 'Created',minWidth: 100,data: 'string',isMultiline:true ,
-              isRowHeader: true,isResizable: true,isSorted: false,
+              key: 'Created',name: 'Start Time',fieldName: 'Created',minWidth: 100,data: 'number',isMultiline:true ,
+              isRowHeader: true,isResizable: true,isSorted: true,onColumnClick: this._onColumnClick,
               onRender: (item: any) => {                                                              
                 var startTime = moment(item.Created).format("L hh:mm:ss A");
                 return (                    
@@ -66,8 +67,8 @@ export default class MyAlltasksComponent  extends React.Component<IMyAllTaskComp
               }              
             },            
             {
-              key: 'CV_EndTime',name: 'End Time',minWidth: 100,data: 'string',isMultiline:true ,
-              isRowHeader: true,isResizable: true,isSorted: false,
+              key: 'CV_EndTime',name: 'End Time',minWidth: 100,data: 'number',isMultiline:true ,
+              isRowHeader: true,isResizable: true,isSorted: true,onColumnClick: this._onColumnClick,
               onRender: (item: any) => {                                
                   var timertime = "18:17:00";
                   if(item.CV_EndTime == null || item.CV_EndTime == undefined || item.CV_EndTime == "")
@@ -105,7 +106,7 @@ export default class MyAlltasksComponent  extends React.Component<IMyAllTaskComp
               },            
           ];
           this.state = {
-            todaysTaskCoumns : columns,
+            myallTaskCoumns : columns,
             isClientDataLoaded : false
           }                 
      }          
@@ -128,8 +129,8 @@ export default class MyAlltasksComponent  extends React.Component<IMyAllTaskComp
                 </div>                                
                 </div>                                 
                 <ShimmeredDetailsList                              
-                  items={this.state.todaysTasks}
-                  columns={this.state.todaysTaskCoumns}
+                  items={this.state.myAllTasks}
+                  columns={this.state.myallTaskCoumns}
                   layoutMode={DetailsListLayoutMode.justified}
                   isHeaderVisible={true}                                                
                   enableShimmer={!this.state.isClientDataLoaded}                                  
@@ -145,7 +146,7 @@ export default class MyAlltasksComponent  extends React.Component<IMyAllTaskComp
         public async componentWillMount(){                                
           var response = await this._getTodaysTasks(this.props.listname);
           if(response != null)
-            this.setState({todaysTasks : response,isClientDataLoaded:true});          
+            this.setState({myAllTasks : response,isClientDataLoaded:true});          
         }        
         public async _getTodaysTasks(listname : string): Promise<any> {   
           try 
@@ -178,4 +179,32 @@ export default class MyAlltasksComponent  extends React.Component<IMyAllTaskComp
           else 
                return "";   
       }
+      private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
+        const { myallTaskCoumns, myAllTasks } = this.state;
+        const newColumns: IColumn[] = myallTaskCoumns.slice();
+        const currColumn: IColumn = newColumns.filter(currCol => column.key === currCol.key)[0];
+        newColumns.forEach((newCol: IColumn) => {
+          if (newCol === currColumn) {
+            currColumn.isSortedDescending = !currColumn.isSortedDescending;
+            currColumn.isSorted = true;
+            this.setState({
+              announcedMessage: `${currColumn.name} is sorted ${
+                currColumn.isSortedDescending ? 'descending' : 'ascending'
+              }`,
+            });
+          } else {
+            newCol.isSorted = false;
+            newCol.isSortedDescending = true;
+          }
+        });
+        const newItems = _copyAndSort(myAllTasks, currColumn.fieldName!, currColumn.isSortedDescending);
+        this.setState({
+          myallTaskCoumns: newColumns,
+          myAllTasks: newItems,
+        });
+      };
   }     
+  function _copyAndSort<T>(items: T[], columnKey: string, isSortedDescending?: boolean): T[] {
+    const key = columnKey as keyof T;
+    return items.slice(0).sort((a: T, b: T) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
+  }

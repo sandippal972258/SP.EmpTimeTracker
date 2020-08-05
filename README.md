@@ -3,19 +3,18 @@
 Steps for configure webpart in your tenant.
 <br/>
 <br/>
-1 - Clone code from github in your local. Follow this commands.<br/>
+1 - Clone code from github in your local directory. Follow below commands.<br/>
     git clone the repo<br/>
     npm i<br/>
-2 - Run this command for run project -> gulp serve    
+2 - To run the project, execute this command. -> gulp serve
 <br/>
-3 - Take list template file from assests folder and create employee time tracker list in your site collection.
+3 - File list template file(EmployeeTimeTracker_ListTemplate.stp) from src -> assets location. Create employee time tracker list using this list template.
 <br/>
-4 - Create a new page in modern site and drop emp time tracker webpart  in your page.
+4 - Create a new page in modern site and drop emp time tracker web-part.
 <br/>
-5 - Edit web part and put your employee tracker list name.
+5 - Configure target list name from edit web-part properties tool-pane.
 <br/>
-6 - Last, refresh the page and you will have ready this web part in your tenant.
-<br/>
+6 - Save your page and refresh once.
 <br/>
 <br/>
 
@@ -40,8 +39,8 @@ This package produces the following:
 
 ### Build options
 
-gulp clean - TODO
-gulp test - TODO
-gulp serve - TODO
-gulp bundle - TODO
-gulp package-solution - TODO
+gulp clean - TODO<br/>
+gulp test - TODO<br/>
+gulp serve - TODO<br/>
+gulp bundle - TODO<br/>
+gulp package-solution - TODO<br/>

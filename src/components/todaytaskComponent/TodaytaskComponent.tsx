@@ -191,7 +191,7 @@ export default class TodaytaskComponent  extends React.Component<ITodaytaskCompo
                           <small className="required">{this.state.isSubmitted && (this.state.CV_Category == null || this.state.CV_Category == undefined || this.state.CV_Category.length == 0 ) ? "Category is required": ""}</small>
                     </div>
                     <div className="ms-Grid-col ms-sm12 ms-md12 ms-lg12 margin-10">
-                      <PrimaryButton text="Submit" onClick={this._submitRequest} allowDisabledFocus />            
+                      <PrimaryButton disabled={this.state.isRunning} text="Submit" onClick={this._submitRequest} allowDisabledFocus />            
                     </div>
 
                     <div className="ms-Grid-col ms-sm9 ms-md9 ms-lg9" >
